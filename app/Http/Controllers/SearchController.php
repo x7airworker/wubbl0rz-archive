@@ -10,7 +10,7 @@ class SearchController extends Controller
     public function index(Request $request) {
         $query = $request->get('query');
 
-        $clips = Clip::where('title', 'ilike', '%' . $query . '%')->orWhere('creator', 'ilike', '%' . $query . '%')->paginate(21);
+        $clips = Clip::where('title', 'LIKE', '%' . $query . '%')->orWhere('creator', 'LIKE', '%' . $query . '%')->paginate(21);
         $clips->setPageName('clips_page');
 
         return view('search', [
