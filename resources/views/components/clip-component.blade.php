@@ -1,6 +1,6 @@
 <div class="card h-100">
     <a href="{{ route('clips.show', [$clip]) }}">
-        <img src="{{ $clip->thumbnail_url }}" class="card-img-top">
+        <img src="{{ $clip->thumbnail_url }}" class="card-img-top" alt="Thumbnail">
     </a>
     <div class="card-body">
         <h5 class="card-title">{{ $clip->title }}</h5>
