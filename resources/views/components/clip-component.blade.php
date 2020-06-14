@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card h-100">
     <a href="{{ route('clips.show', [$clip]) }}">
         <img src="{{ $clip->thumbnail_url }}" class="card-img-top">
     </a>
