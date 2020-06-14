@@ -11,7 +11,10 @@ class GameController extends Controller
     public function index()
     {
         $games = Cache::remember('games', 21600, function() {
-            return Clip::select('game')->distinct()->pluck('game');
+            return Clip::selectRaw('game, count(*) as num')
+                ->groupBy('game')
+                ->orderBy('num', 'DESC')
+                ->pluck('game');
         });
 
         return view('games.index', [
