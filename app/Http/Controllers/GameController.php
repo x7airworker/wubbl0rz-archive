@@ -14,7 +14,7 @@ class GameController extends Controller
             return Clip::selectRaw('game, count(*) as num')
                 ->groupBy('game')
                 ->orderBy('num', 'DESC')
-                ->pluck('game');
+                ->get();
         });
 
         return view('games.index', [
