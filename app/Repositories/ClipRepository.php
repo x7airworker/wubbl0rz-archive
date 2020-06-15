@@ -28,7 +28,7 @@ class ClipRepository implements Interfaces\ClipRepositoryInterface
     public function findCachedDistinctGames()
     {
         return Cache::remember('games', 21600, function() {
-            return $this->findCachedDistinctGames();
+            return $this->findDistinctGames();
         });
     }
 
