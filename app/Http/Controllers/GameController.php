@@ -1,21 +1,20 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Clip;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
+use App\Repositories\Interfaces\ClipRepositoryInterface;
 
 class GameController extends Controller
 {
+    private $clipRepo;
+
+    public function __construct(ClipRepositoryInterface $clipRepo)
+    {
+        $this->clipRepo = $clipRepo;
+    }
+
     public function index()
     {
-        $games = Cache::remember('games', 21600, function() {
-            return Clip::selectRaw('game, count(*) as num')
-                ->groupBy('game')
-                ->orderBy('num', 'DESC')
-                ->get();
-        });
+        $games = $this->clipRepo->findCachedDistinctGames();
 
         return view('games.index', [
             "games" => $games
@@ -24,7 +23,7 @@ class GameController extends Controller
 
     public function show($game)
     {
-        $clips = Clip::where('game', $game)->paginate(21);
+        $clips = $this->clipRepo->paginateByGame($game);
 
         return view('games.show', [
             "clips" => $clips,

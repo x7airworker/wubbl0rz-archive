@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Clip;
+use App\Repositories\Interfaces\ClipRepositoryInterface;
 
 class ClipController extends Controller
 {
+    private $clipRepo;
+
+    public function __construct(ClipRepositoryInterface $clipRepo)
+    {
+        $this->clipRepo = $clipRepo;
+    }
+
     public function index()
     {
-        $clips = Clip::orderBy('created_at', 'desc')->paginate(21);
+        $clips = $this->clipRepo->paginate();
 
         return view('clips.index', [
             "clips" => $clips
