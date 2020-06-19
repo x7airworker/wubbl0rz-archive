@@ -24,7 +24,7 @@ class SearchController extends Controller
         $clips->setPageName('clips_page');
 
         return view('search', [
-            "query" => $request->get('query'),
+            "query" => $query,
             "clips" => $clips
         ]);
     }
