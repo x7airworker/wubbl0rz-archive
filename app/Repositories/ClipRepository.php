@@ -17,7 +17,7 @@ class ClipRepository implements Interfaces\ClipRepositoryInterface
         return Clip::where('game', $game)->paginate(21);
     }
 
-    public function findDistinctGames()
+    function findDistinctGames()
     {
         return Clip::selectRaw('game, count(*) as num')
             ->groupBy('game')

@@ -24,7 +24,7 @@ class ClipController extends Controller
     }
 
     public function show(Clip $clip) {
-        $url = "https://clips.twitch.tv/embed?clip=" . $clip->clip_id . "&autoplay=false&parent=" . env('TWITCH_PARENT');
+        $url = "https://clips.twitch.tv/embed?clip=" . $clip->clip_id . "&autoplay=false&parent=" . config('app.twitch_parent');
 
         return view('clips.show', [
             "clip" => $clip,

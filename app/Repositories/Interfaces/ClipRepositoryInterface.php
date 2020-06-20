@@ -8,7 +8,7 @@ interface ClipRepositoryInterface
 
     public function paginateByGame($game);
 
-    public function findDistinctGames();
+    function findDistinctGames();
 
     public function findCachedDistinctGames();
 
