@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/search', 'SearchController@index')->name('search');
 
@@ -23,5 +21,5 @@ Route::resources([
     'clips' => 'ClipController',
     'streams' => 'StreamController',
     'games' => 'GameController',
-    'themes' => 'ThemeController'
+    'themes' => 'ThemeController',
 ]);
