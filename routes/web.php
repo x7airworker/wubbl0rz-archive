@@ -22,5 +22,6 @@ Route::get('/search', 'SearchController@index')->name('search');
 Route::resources([
     'clips' => 'ClipController',
     'streams' => 'StreamController',
-    'games' => 'GameController'
+    'games' => 'GameController',
+    'themes' => 'ThemeController'
 ]);

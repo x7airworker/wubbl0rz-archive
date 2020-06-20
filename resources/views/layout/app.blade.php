@@ -8,7 +8,7 @@
     <title>Wubbl0rz Archiv | @yield('title')</title>
     <meta name="description" content="Das Wubbl0rz Stream Archiv.">
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{$theme->url}}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -31,6 +31,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ (request()->is('games')) ? 'active' : '' }}" href="{{ route('games.index') }}">Spiele</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ (request()->is('themes')) ? 'active' : '' }}" href="{{ route('themes.index') }}">Themes</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="GET">
