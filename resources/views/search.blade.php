@@ -12,7 +12,7 @@
         @endforeach
     </div>
     <div class="d-flex justify-content-center mt-5">
-        {{ $clips->links() }}
+        {{ $clips->onEachSide(1)->links() }}
     </div>
     <hr>
     <h3>Streams</h3>
