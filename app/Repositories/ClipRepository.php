@@ -34,8 +34,9 @@ class ClipRepository implements Interfaces\ClipRepositoryInterface
 
     public function paginateLikeTitleOrUser($term)
     {
-        return Clip::where('title', 'LIKE', '%' . $term . '%')
-            ->orWhere('creator', 'LIKE', '%' . $term . '%')
+        $term = strtolower($term);
+        return Clip::whereRaw('LOWER(title) LIKE (?)', ["%{$term}%"])
+            ->orWhereRaw('LOWER(creator) LIKE (?)', ["%{$term}%"])
             ->paginate(21);
     }
 }
