@@ -135,6 +135,8 @@ return [
     */
 
     'twitch_parent' => env('TWITCH_PARENT'),
+    'twitch_client_id' => env('TWITCH_CLIENT_ID'),
+    'twitch_access_token' => env('TWITCH_ACCESS_TOKEN'),
 
     'providers' => [
 
@@ -171,7 +173,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \App\Providers\RepositoriesServiceProvider::class,
-        \App\Providers\ThemeProvider::class
+        \App\Providers\ThemeProvider::class,
+        \App\Providers\TwitchApiProvider::class
     ],
 
     /*
